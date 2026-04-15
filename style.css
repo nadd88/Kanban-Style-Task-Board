@@ -21,7 +21,7 @@ header {
     justify-content: space-between;
     align-items: center;
 
-    background: #2d3748;
+    background: #630f47;
     color: white;
 
     padding: 15px 20px;
@@ -128,10 +128,6 @@ button:hover {
 /* ======================
    MODAL
 ====================== */
-.hidden {
-    display: none;
-}
-
 #taskModal {
     position: fixed;
     top: 0;
@@ -142,9 +138,16 @@ button:hover {
 
     background: rgba(0, 0, 0, 0.5);
 
-    display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+#taskModal:not(.hidden) {
+    display: flex;
 }
 
 .modal-content {

@@ -1,8 +1,8 @@
 let tasks = [];
 let taskIdCounter = 1;
 let currentEditId = null;
+let selectedColumn = "todo";
 
-// DOM
 const todoList = document.getElementById("todoList");
 const inprogressList = document.getElementById("inprogressList");
 const doneList = document.getElementById("doneList");
@@ -199,3 +199,41 @@ document.getElementById("clearDone").addEventListener("click", function () {
         }, index * 100);
     });
 });
+
+document.querySelectorAll("button[data-column]").forEach(button => {
+
+    button.addEventListener("click", function () {
+
+        selectedColumn = this.getAttribute("data-column");
+
+        currentEditId = null;
+
+        titleInput.value = "";
+        descInput.value = "";
+        priorityInput.value = "low";
+        dueDateInput.value = "";
+
+        modal.classList.remove("hidden");
+    });
+});
+
+cancelBtn.addEventListener("click", function () {
+    modal.classList.add("hidden");
+});
+
+saveBtn.addEventListener("click", function () {
+
+    const taskObj = {
+        id: taskIdCounter++,
+        title: titleInput.value,
+        description: descInput.value,
+        priority: priorityInput.value,
+        dueDate: dueDateInput.value
+    };
+
+    addTask(selectedColumn, taskObj);
+
+    modal.classList.add("hidden");
+});
+
+updateCounter();
