@@ -175,3 +175,27 @@ document.getElementById("priorityFilter").addEventListener("change", function ()
         card.classList.toggle("is-hidden", !match);
     });
 });
+
+document.getElementById("clearDone").addEventListener("click", function () {
+
+    const cards = [...document.querySelectorAll("#doneList .task-card")];
+
+    cards.forEach((card, index) => {
+
+        setTimeout(() => {
+
+            card.classList.add("fade-out");
+
+            setTimeout(() => {
+                card.remove();
+
+                tasks = tasks.filter(t =>
+                    t.id !== parseInt(card.getAttribute("data-id"))
+                );
+
+                updateCounter();
+            }, 300);
+
+        }, index * 100);
+    });
+});
