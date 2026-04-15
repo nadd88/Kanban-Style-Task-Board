@@ -17,6 +17,10 @@ const cancelBtn = document.getElementById("cancelTask");
 
 const counter = document.getElementById("taskCounter");
 
+function updateCounter() {
+    counter.textContent = tasks.length;
+}
+
 function createTaskCard(taskObj) {
 
     const li = document.createElement("li");
@@ -118,3 +122,17 @@ function updateTask(taskId, updatedData) {
 
     updateCounter();
 }
+
+[todoList, inprogressList, doneList].forEach(list => {
+
+    list.addEventListener("click", function (event) {
+
+        const action = event.target.getAttribute("data-action");
+        const id = parseInt(event.target.getAttribute("data-id"));
+
+        if (!action || !id) return;
+
+        if (action === "delete") deleteTask(id);
+        if (action === "edit") editTask(id);
+    });
+});
