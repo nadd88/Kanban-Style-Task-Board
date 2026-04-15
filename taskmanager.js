@@ -136,3 +136,30 @@ function updateTask(taskId, updatedData) {
         if (action === "edit") editTask(id);
     });
 });
+
+document.addEventListener("dblclick", function (event) {
+
+    if (!event.target.classList.contains("task-title")) return;
+
+    const oldValue = event.target.textContent;
+
+    const input = document.createElement("input");
+    input.value = oldValue;
+
+    event.target.replaceWith(input);
+    input.focus();
+
+    function save() {
+        const span = document.createElement("span");
+        span.classList.add("task-title");
+        span.textContent = input.value;
+
+        input.replaceWith(span);
+    }
+
+    input.addEventListener("blur", save);
+
+    input.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") save();
+    });
+});
