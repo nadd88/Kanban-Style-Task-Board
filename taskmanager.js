@@ -84,3 +84,17 @@ function deleteTask(taskId) {
     }, 300);
 }
 
+function editTask(taskId) {
+
+    const task = tasks.find(t => t.id === taskId);
+    if (!task) return;
+
+    currentEditId = taskId;
+
+    titleInput.value = task.title;
+    descInput.value = task.description;
+    priorityInput.value = task.priority;
+    dueDateInput.value = task.dueDate;
+
+    modal.classList.remove("hidden");
+}
