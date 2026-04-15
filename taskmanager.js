@@ -98,3 +98,23 @@ function editTask(taskId) {
 
     modal.classList.remove("hidden");
 }
+
+function updateTask(taskId, updatedData) {
+
+    const index = tasks.findIndex(t => t.id === taskId);
+    if (index === -1) return;
+
+    tasks[index] = {
+        ...tasks[index],
+        ...updatedData
+    };
+
+    const oldCard = document.querySelector(`[data-id='${taskId}']`);
+
+    if (oldCard) {
+        const newCard = createTaskCard(tasks[index]);
+        oldCard.replaceWith(newCard);
+    }
+
+    updateCounter();
+}
