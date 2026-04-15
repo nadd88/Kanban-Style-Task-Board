@@ -163,3 +163,15 @@ document.addEventListener("dblclick", function (event) {
         if (e.key === "Enter") save();
     });
 });
+
+document.getElementById("priorityFilter").addEventListener("change", function () {
+
+    const value = this.value;
+
+    document.querySelectorAll(".task-card").forEach(card => {
+
+        const match = value === "all" || card.classList.contains(value);
+
+        card.classList.toggle("is-hidden", !match);
+    });
+});
