@@ -70,3 +70,17 @@ function addTask(columnId, taskObj) {
     updateCounter();
 }
 
+function deleteTask(taskId) {
+
+    const card = document.querySelector(`[data-id='${taskId}']`);
+    if (!card) return;
+
+    card.classList.add("fade-out");
+
+    setTimeout(() => {
+        card.remove();
+        tasks = tasks.filter(t => t.id !== taskId);
+        updateCounter();
+    }, 300);
+}
+
