@@ -1,0 +1,181 @@
+/* ======================
+   RESET + BASE
+====================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f6f9;
+    padding: 20px;
+}
+
+/* ======================
+   HEADER
+====================== */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: #2d3748;
+    color: white;
+
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 20px;
+}
+
+#taskCounter {
+    background: #38b2ac;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-left: 10px;
+}
+
+/* Filter dropdown */
+select {
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+}
+
+/* ======================
+   MAIN BOARD LAYOUT
+====================== */
+main {
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+}
+
+section {
+    flex: 1;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    min-height: 400px;
+}
+
+section h2 {
+    margin-bottom: 10px;
+}
+
+/* Buttons */
+button {
+    padding: 6px 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    background: #3182ce;
+    color: white;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+/* ======================
+   TASK CARD
+====================== */
+.task-card {
+    background: #edf2f7;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    transition: all 0.3s ease;
+}
+
+.task-card span {
+    font-weight: bold;
+}
+
+/* Task buttons inside card */
+.task-card button {
+    margin-top: 5px;
+    background: #4a5568;
+}
+
+/* ======================
+   PRIORITY COLORS
+====================== */
+.low {
+    border-left: 5px solid green;
+}
+
+.medium {
+    border-left: 5px solid orange;
+}
+
+.high {
+    border-left: 5px solid red;
+}
+
+/* ======================
+   MODAL
+====================== */
+.hidden {
+    display: none;
+}
+
+#taskModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.5);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    width: 300px;
+}
+
+/* Inputs */
+input, textarea, select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* ======================
+   ANIMATIONS
+====================== */
+.fade-out {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 0.3s ease;
+}
+
+/* Filter hiding */
+.is-hidden {
+    display: none !important;
+}
